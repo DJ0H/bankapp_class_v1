@@ -105,17 +105,10 @@ public class AccountService {
 			throw new CustomRestfullException("출금계좌가 없습니다", HttpStatus.BAD_REQUEST);
 		}
 		
-		if(wAccountEntity.getUserId() != id) {
-
-			throw new CustomRestfullException("본인 소유 계좌가 아닙니다", HttpStatus.UNAUTHORIZED);
-		}
-		if(wAccountEntity.getPassword().equals(dto.getPassword()) == false) {
-			
-			throw new CustomRestfullException("출금 계좌 비밀번호가 틀렸습니다", HttpStatus.UNAUTHORIZED);
-		}
-		if(wAccountEntity.getBalance() < dto.getAmount()) {
-			throw new CustomRestfullException("계좌 잔액이 부족합니다", HttpStatus.UNAUTHORIZED);
-		}
+		wAccountEntity.checkOwner(id);
+		wAccountEntity.checkPassword(dto.getPassword());
+		wAccountEntity.checkBalance(dto.getAmount());
+		
 		dAccountEntity.deposit(dto.getAmount());
 		accountRepository.updateById(dAccountEntity);
 		wAccountEntity.withdraw(dto.getAmount());

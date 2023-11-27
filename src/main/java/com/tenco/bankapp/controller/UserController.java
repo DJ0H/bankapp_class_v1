@@ -64,6 +64,7 @@ public class UserController {
 		}
 		User principal = userService.signIn(dto);
 		httpSession.setAttribute(Define.PRINCIPAL, principal);
+		
 		return "redirect:/account/list";
 	}
 	@GetMapping("/logout")

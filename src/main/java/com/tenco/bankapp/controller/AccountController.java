@@ -65,6 +65,7 @@ public class AccountController {
 		if(principal == null) {
 			throw new UnAuthorizedException("로그인 먼저 해주세요.", HttpStatus.UNAUTHORIZED);
 		}
+		
 		if(dto.getNumber() == null || dto.getNumber().isEmpty()) {
 			throw new CustomRestfullException("계좌번호를 입력하시오.", HttpStatus.BAD_REQUEST);
 		}
