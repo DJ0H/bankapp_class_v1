@@ -125,4 +125,27 @@ public class AccountService {
 			throw new CustomRestfullException("정상 처리 되지 않았습니다", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	/*
+	 * 단일 계좌 조회
+	 * @param accountId
+	 * @return Account
+	 */
+	public Account findById(Integer accountId) {
+		Account accountEntity = accountRepository.findById(accountId);
+		if(accountEntity == null) {
+			throw new CustomRestfullException("해당 계좌를 찾을 수 없습니다", HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return accountEntity;
+	}
+	public List<History> readHistoryListByAccount(String type, Integer accountId) {
+		List<History> historyEntity = historyRepository.findByIdAndDynamicType(accountId, type);
+		return historyEntity;
+	}
+	
+	/*
+	 * @param type = [all, deposit, withdraw]
+	 * @param accountId
+	 * @return
+	 */
+
 }

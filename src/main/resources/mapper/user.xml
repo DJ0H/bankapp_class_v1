@@ -4,8 +4,8 @@
 
 <mapper namespace="com.tenco.bankapp.repository.interfaces.UserRepository">
 	<insert id="insert">
-		insert into user_tb(username, password, fullname) 
-			values (#{username}, #{password}, #{fullname})
+		insert into user_tb(username, password, fullname, origin_file_name, upload_file_name) 
+			values (#{username}, #{password}, #{fullname}, #{originFileName}, #{uploadFileName})
 	</insert>
 	<update id="updateById">
 		update user_tb set username = #{username}, password = #{password},
@@ -27,5 +27,11 @@
 		select * 
 		from user_tb
 		where username = #{username} and password = #{password}
+	</select> 
+	<!-- username으로 사용자 검색 -->
+	<select id="findByUsername" resultType="com.tenco.bankapp.repository.entity.User">
+		select * 
+		from user_tb
+		where username = #{username}
 	</select> 
 </mapper>

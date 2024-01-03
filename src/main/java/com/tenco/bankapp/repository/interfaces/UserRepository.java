@@ -15,4 +15,5 @@ public interface UserRepository {
 	public User findById(Integer id);// 사용자 조회
 	public List<User> selectAllById(Integer id);// 사용자 전체 조회
 	public User findByUsernameAndPassword(SignInFormDto dto);
+	public User findByUsername(String username); // 사용자의 이름만 조회
 }

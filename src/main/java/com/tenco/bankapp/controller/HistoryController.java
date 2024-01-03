@@ -31,11 +31,7 @@ public class HistoryController {
 	public String withdraw() {
 	
 		// 1. 인증검사 
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		if(principal == null) {
-			throw new UnAuthorizedException("로그인 먼저 해주세요", 
-					HttpStatus.UNAUTHORIZED);
-		}
+		
 		return "account/withdraw";
 	}
 	
@@ -43,10 +39,7 @@ public class HistoryController {
 	public String withdrawProc(WithdrawFormDto dto) {
 		
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		if(principal == null) {
-			throw new UnAuthorizedException("로그인 먼저 해주세요", 
-					HttpStatus.UNAUTHORIZED);
-		}
+	
 		
 		if(dto.getAmount() == null) {
 			throw new CustomRestfullException("금액을 입력하시오", HttpStatus.BAD_REQUEST);
@@ -72,20 +65,13 @@ public class HistoryController {
 	}
 	@GetMapping("/deposit")
 	public String deposit() {
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		if(principal == null) {
-			throw new UnAuthorizedException("로그인 먼저 해주세요", 
-					HttpStatus.UNAUTHORIZED);
-		}
+		
 		return "account/deposit";
 	}
 	@PostMapping("/deposit")
 	public String depositProc(DepositFormDto dto) {
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		if(principal == null) {
-			throw new UnAuthorizedException("로그인 먼저 해주세요", 
-					HttpStatus.UNAUTHORIZED);
-		}
+	
+		
 		if(dto.getAmount() == null) {
 			throw new CustomRestfullException("금액을 입력해 주세요", HttpStatus.BAD_REQUEST);
 		}
@@ -100,20 +86,13 @@ public class HistoryController {
 	}
 	@GetMapping("/transfer")
 	public String transfer() {
-		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		if(principal == null) {
-			throw new UnAuthorizedException("로그인 먼저 해주세요", 
-					HttpStatus.UNAUTHORIZED);
-		}
+		
 		return "account/transfer";
 	}
 	@PostMapping("/transfer")
 	public String transferPro(transferFormDto dto) {
 		User principal = (User)session.getAttribute(Define.PRINCIPAL);
-		if(principal == null) {
-			throw new UnAuthorizedException("로그인 먼저 해주세요", 
-					HttpStatus.UNAUTHORIZED);
-		}
+		
 		if(dto.getAmount() == null) {
 			throw new CustomRestfullException("금액을 입력해 주세요", HttpStatus.BAD_REQUEST);
 		}

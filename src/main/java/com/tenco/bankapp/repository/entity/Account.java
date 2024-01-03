@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import org.springframework.http.HttpStatus;
 
 import com.tenco.bankapp.handler.exception.CustomRestfullException;
+import com.tenco.bankapp.utils.BalanceUtil;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -50,5 +51,9 @@ public class Account {
 		if(this.userId != principalId) {
 			throw new CustomRestfullException("본인 계좌가 아닙니다.", HttpStatus.BAD_REQUEST);
 		}
+	}
+	
+	public String formatBalance() {
+		return BalanceUtil.formatBalance(balance);
 	}
 }

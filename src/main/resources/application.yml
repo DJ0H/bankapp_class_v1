@@ -9,7 +9,12 @@ spring:
   mvc:
     view:
       prefix: /WEB-INF/view/
-      suffix: .jsp      
+      suffix: .jsp   
+  servlet:
+    multipart:
+      max-file-size: 20MB  #최대 20MB
+      max-request-size: 20MB
+          
   datasource:
     url: jdbc:mysql://localhost:3306/mybank?serverTimeZone=Asia/Seoul 
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -38,5 +43,6 @@ logging:
   level:
     org.mybatis: DEBUG
       
-  
-       
+#초기 파라미터 설정 (1234567890! 해시함수)
+tenco:
+  key:  150A0D3EC31A459C6171663BD0990CD382C471DF8F4D19C2C5E6EF3C40D40E37

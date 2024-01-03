@@ -17,4 +17,10 @@ public class User {
 	private String password;
 	private String fullname;
 	private Timestamp createdAt;
+	private String originFileName;
+	private String uploadFileName;
+	
+	public String setUpUserImage() {
+		return uploadFileName == null ? "http://picsum.photos/id/1/350" : "/images/uploads/" + uploadFileName;
+	}
 }

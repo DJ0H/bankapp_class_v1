@@ -17,5 +17,5 @@ public interface HistoryRepository {
 	public History findById();
 	// 코드 추가 
 	// 파라미터가 하나 이상인 경우 @param 사용해서 명시 하자.  
-	public List<HistoryResponseDto> findByIdAndDynamicType(@Param("id") Integer id, @Param("type") String type);
+	public List<History> findByIdAndDynamicType(@Param("accountId") Integer id, @Param("type") String type);
 }
